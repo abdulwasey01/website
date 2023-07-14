@@ -2,8 +2,17 @@
 <html>
 <head>
     <title>IP Address</title>
+    <script>
+        function displayIP() {
+            var ipAddress = document.getElementById("ipInput").value;
+            document.getElementById("ipDisplay").textContent = ipAddress;
+        }
+    </script>
 </head>
 <body>
-    <h1>192.168.0.200</h1>
+    <h1>Enter IP Address</h1>
+    <input type="text" id="ipInput" placeholder="Enter IP Address">
+    <button onclick="displayIP()">Submit</button>
+    <h2 id="ipDisplay"></h2>
 </body>
 </html>
