@@ -4,13 +4,40 @@
   <title>ESP32 Configuration</title>
 </head>
 <body>
-  <h1>ESP32-Configuration</h1>
-  <form>
+  <h1>ESP32 Configuration</h1>
+  <form id="configForm" onsubmit="submitForm(event)">
     <label for="ssid">SSID:</label><br>
-    <input type="text" id="ssid" name="ssid"><br><br>
+    <input type="text" id="ssid" name="ssid" required><br><br>
     <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password"><br><br>
+    <input type="password" id="password" name="password" required><br><br>
     <input type="submit" value="Submit">
   </form>
+
+  <script>
+    function submitForm(event) {
+      event.preventDefault();
+      var ssid = document.getElementById("ssid").value;
+      var password = document.getElementById("password").value;
+
+      // Send the form data to the server
+      fetch("/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ ssid, password })
+      })
+      .then(response => {
+        console.log("Form data submitted successfully!");
+      })
+      .catch(error => {
+        console.error("Error submitting form data:", error);
+      });
+
+      // Clear the input fields
+      document.getElementById("ssid").value = "";
+      document.getElementById("password").value = "";
+    }
+  </script>
 </body>
 </html>
