@@ -2,29 +2,24 @@
 <html>
 <head>
   <title>Wi-Fi Credentials</title>
+  <script>
+    function printCredentials() {
+      var ssid = document.getElementById("ssid").value;
+      var password = document.getElementById("password").value;
+      
+      var output = document.getElementById("output");
+      output.innerHTML = "SSID: " + ssid + "<br>Password: " + password;
+    }
+  </script>
 </head>
 <body>
   <h1>Wi-Fi Credentials</h1>
-  <form id="wifiForm">
-    <label for="ssid">SSID:</label>
-    <input type="text" id="ssid" name="ssid" required><br><br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required><br><br>
-    <input type="submit" value="Connect">
-  </form>
+  <label for="ssid">SSID:</label>
+  <input type="text" id="ssid" name="ssid" required><br><br>
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required><br><br>
+  <button onclick="printCredentials()">Print Credentials</button>
 
-  <script>
-    document.getElementById("wifiForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      var ssid = document.getElementById("ssid").value;
-      var password = document.getElementById("password").value;
-
-      // Display the entered values on the webpage
-      var result = document.getElementById("result");
-      result.innerHTML = "SSID: " + ssid + "<br>Password: " + password;
-    });
-  </script>
-
-  <div id="result"></div>
+  <div id="output"></div>
 </body>
 </html>
