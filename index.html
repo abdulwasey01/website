@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Wi-Fi Credentials</title>
+  <title>SSID and Password Form</title>
+</head>
+<body>
+  <h1>Enter SSID and Password</h1>
+  <form>
+    <label for="ssid">SSID:</label>
+    <input type="text" id="ssid" name="ssid" required><br><br>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+    
+    <input type="button" value="Submit" onclick="displayCredentials()">
+  </form>
+
+  <h2>Entered Credentials:</h2>
+  <p id="credentials"></p>
+
   <script>
-    function printCredentials() {
+    function displayCredentials() {
       var ssid = document.getElementById("ssid").value;
       var password = document.getElementById("password").value;
       
-      var output = document.getElementById("output");
-      output.innerHTML = "SSID: " + ssid + "<br>Password: " + password;
+      document.getElementById("credentials").innerHTML = "SSID: " + ssid + "<br>Password: " + password;
     }
   </script>
-</head>
-<body>
-  <h1>Wi-Fi Credentials</h1>
-  <label for="ssid">SSID:</label>
-  <input type="text" id="ssid" name="ssid" required><br><br>
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" required><br><br>
-  <button onclick="printCredentials()">Print Credentials</button>
-
-  <div id="output"></div>
 </body>
 </html>
