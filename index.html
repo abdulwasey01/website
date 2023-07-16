@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SSID and Password Form</title>
+  <title>ESP32 Configuration</title>
 </head>
 <body>
-  <h1>Enter SSID and Password</h1>
-  <form action="/" method="POST">
-    <label for="ssid">SSID:</label>
-    <input type="text" id="ssid" name="ssid" required><br><br>
-    
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required><br><br>
-    
+  <h1>ESP32 Configuration</h1>
+  <form id="configForm">
+    <label for="ssid">SSID:</label><br>
+    <input type="text" id="ssid" name="ssid"><br><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
     <input type="submit" value="Submit">
   </form>
+
+  <script>
+    document.getElementById("configForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var ssid = document.getElementById("ssid").value;
+      var password = document.getElementById("password").value;
+      
+      // Perform any necessary validation or processing with the values
+      
+      // Display the values on the webpage
+      var displayElement = document.createElement("p");
+      displayElement.innerHTML = "SSID: " + ssid + "<br>Password: " + password;
+      document.body.appendChild(displayElement);
+      
+      // Clear the input fields
+      document.getElementById("ssid").value = "";
+      document.getElementById("password").value = "";
+    });
+  </script>
 </body>
 </html>
